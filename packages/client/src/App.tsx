@@ -12,8 +12,8 @@ import TopicPage from './pages/topic.page'
 import { Page404 } from './pages/Page_404'
 import Navigation from './components/navigation'
 import interceptorsProvider from '@/providers/interceptors.provider'
-import { PrivateRoute } from '@/components/PrivateRoute'
 import { ForumPostPage } from '@/pages/ForumPost'
+import { AuthRequired } from '@/components/AuthRequired'
 
 function App() {
   useEffect(() => {
@@ -33,8 +33,7 @@ function App() {
       <BrowserRouter>
         <Navigation />
         <Routes>
-          <Route path="game" element={<GamePage />} />
-          <Route element={<PrivateRoute />}>
+          <Route element={<AuthRequired />}>
             <Route path="profile" element={<ProfilePage />} />
             <Route path="leaderboard" element={<LeaderboardPage />} />
             <Route path="forum">
@@ -43,6 +42,7 @@ function App() {
             </Route>
             <Route path="topic" element={<TopicPage />} />
           </Route>
+          <Route path="game" element={<GamePage />} />
           <Route path="/" element={<MainPage />} index />
           <Route path="login" element={<LoginPage />} />
           <Route path="signup" element={<SignupPage />} />
