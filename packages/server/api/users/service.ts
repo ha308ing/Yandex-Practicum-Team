@@ -14,6 +14,12 @@ class UsersService {
     }
     return authorIndex ? Users.findOne(params) : Users.findAll(params)
   }
+
+  findOrCreate(data: UsersCreateAttributes) {
+    return Users.findOrCreate({
+      where: data,
+    })
+  }
 }
 
 export const usersService = new UsersService()

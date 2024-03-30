@@ -36,4 +36,23 @@ export class UsersApi {
       response.json(null)
     }
   }
+
+  static findOrCreate = async (
+    request: TypedRequestBody<{ display_name: string; id: number }>,
+    response: Response
+  ) => {
+    try {
+      const { id: userYandexId, display_name: author } = request.body
+      const user = await usersService.findOrCreate({
+        authorIndex: undefined,
+        userYandexId,
+        author,
+      })
+      response.json(user)
+    } catch (error) {
+      console.error('UsersApi.findOrCreate Error')
+      console.error(error)
+      response.json(null)
+    }
+  }
 }

@@ -11,6 +11,8 @@ import { PreloadStateByUrlService } from './store/preloadStateByUrlService'
 
 import { sequelize } from './orm/sequelize'
 import { router } from './router'
+import cookieParser from 'cookie-parser'
+import { auth } from './middlewares/auth'
 
 const isDev = process.env.NODE_ENV === 'development'
 
@@ -24,7 +26,9 @@ async function startServer() {
   const app = express()
   app
     .use(cors())
+    .use(cookieParser())
     .use(express.json())
+    .use(auth)
     .use(router)
     .use(express.static(path.resolve(srcPath, 'public')))
 
@@ -79,10 +83,17 @@ async function startServer() {
       }
 
       const state = await new PreloadStateByUrlService(url).getState()
+      // @ts-ignore
+      let user = {}
+      if (res.locals.user) {
+        console.log('res.locals.user')
+        console.log(res.locals.user)
+        user = res.locals.user
+      }
 
       const { html: appHtml, styleTags } = await render({
         path: url,
-        state: state,
+        state: { ...state, userState: { user } },
       })
 
       const appHeadScript = `

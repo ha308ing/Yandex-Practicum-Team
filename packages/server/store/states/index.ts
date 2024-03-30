@@ -1,4 +1,4 @@
-import { getUserState } from './user'
+// import { getUserState } from './user'
 import { getGameState } from './game'
 
 export const enum Routes {
@@ -7,7 +7,8 @@ export const enum Routes {
 }
 
 export const stateSelector = {
-  [Routes.DEFAULT]: [getUserState],
+  // [Routes.DEFAULT]: [getUserState],
+  [Routes.DEFAULT]: [],
   [Routes.GAME_START]: [getGameState],
 }
 
