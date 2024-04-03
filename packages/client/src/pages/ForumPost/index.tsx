@@ -26,8 +26,11 @@ export const ForumPostPage = () => {
   const { data: topicsData } = useGetTopicsQuery()
 
   const data = topicsData?.find(f => f.index === defaultId)
-
   const [addComment] = useAddCommentMutation()
+
+  const formatDate = (date: string) => {
+    return (date ? new Date(date) : new Date()).toLocaleString('ru-RU')
+  }
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
@@ -39,22 +42,28 @@ export const ForumPostPage = () => {
       message: topicDescription.value,
       authorIndex: userId,
     })
+    // e.target as HTMLFormElement.reset()
   }
 
   return (
     <StyledWrapper>
       <Container>
         <StyledPost>
+          <StyledUser>
+            <img src="/avatar.png" width="50" />
+            <p>{data?.author}</p>
+          </StyledUser>
           <Title>{data?.title}</Title>
           <Text>{data?.description}</Text>
-          <p>{data?.author}</p>
-          <StyledTime>{data?.time}</StyledTime>
         </StyledPost>
         {data?.Comments?.map(comment => (
           <StyledComment>
-            <StyledUser>{comment.author}</StyledUser>
+            <StyledUser>
+              <img src="/avatar.png" width="50" />
+              <p>{comment.author ?? 'Неизвестный пользователь'}</p>
+            </StyledUser>
             <p>{comment.message}</p>
-            <StyledTime>{comment.createdAt}</StyledTime>
+            <StyledTime>{formatDate(comment.createdAt)}</StyledTime>
           </StyledComment>
         ))}
         <StyledComment>

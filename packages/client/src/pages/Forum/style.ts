@@ -26,7 +26,7 @@ export const StyledPost = styled.div`
 
 export const Title = styled.h2`
   width: 100%;
-  font-size: 1rem;
+  font-size: 1.3rem;
   font-weight: 700;
 `
 
@@ -55,7 +55,7 @@ export const Input = styled.input`
 export const StyledText = styled.textarea`
   display: block;
   width: 100%;
-  height: 15rem;
+  height: 10rem;
   border: none;
   outline: 0;
   font-size: 1rem;
@@ -79,6 +79,5 @@ export const StyledInfo = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  gap: 0.7rem;
-  margin-top: 1.2rem;
+  align-items: center;
 `
