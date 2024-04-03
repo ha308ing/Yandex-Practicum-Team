@@ -17,6 +17,7 @@ import {
 import { useCreateTopicMutation, useGetTopicsQuery } from '@/store/api/forum'
 import { RootState, useAppSelector } from '@/store/store'
 import Link from '@/components/Link'
+import { StyledUser } from '@/pages/ForumPost/style'
 
 export const ForumPage = () => {
   const selectUser = (state: RootState) => state.userState.user
@@ -59,8 +60,11 @@ export const ForumPage = () => {
           <StyledPost onClick={() => navigate(`/forum/${topic.index}`)}>
             <Title>{topic.title}</Title>
             <StyledInfo>
-              <p>{topic.author}</p>
-              <p>{`${topic.Comments?.length ?? 0} comments`}</p>
+              <StyledUser>
+                <img src="/avatar.png" width="50" />
+                <p>{topic?.author ?? 'Неизвестный пользователь'}</p>
+              </StyledUser>
+              <p>{`${topic.Comments?.length ?? 0} comment(s)`}</p>
             </StyledInfo>
           </StyledPost>
         ))

@@ -44,6 +44,7 @@ const URLS = [
   '/images/moon.png',
   '/images/sun.png',
   '/runner.svg',
+  '/avatar.png',
 ]
 
 const canBeCached = req =>

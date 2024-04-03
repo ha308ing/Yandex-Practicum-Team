@@ -17,13 +17,11 @@ export const StyledPost = styled.div`
   align-items: flex-start;
   justify-content: flex-start;
   width: 50rem;
-  margin: 0.7rem auto;
-  padding: 1.3rem;
+  padding: 1.2rem;
   border-radius: 0.3rem;
   box-shadow: 0 0 20px -1px rgba(34, 60, 80, 0.2);
   background-color: white;
   cursor: pointer;
-  gap: 0.9rem;
 `
 
 export const Container = styled.div`
@@ -32,21 +30,20 @@ export const Container = styled.div`
 
 export const Title = styled.h2`
   width: 100%;
-  font: 1.8rem 'Gill Sans';
+  font: 1.3rem 'Gill Sans';
   font-weight: 700;
 `
 
 export const Text = styled.p`
-  font: 1.2rem 'Gill Sans';
+  font: 1rem 'Gill Sans';
   width: 100%;
 `
 
-export const StyledComment = styled.p`
+export const StyledComment = styled.div`
   width: 50rem;
   display: flex;
   flex-direction: column;
-  gap: 0.4rem;
-  padding: 1rem 2rem;
+  padding: 1.2rem;
   font: 1rem 'Gill Sans';
   border-radius: 0.3rem;
   background-color: white;
@@ -55,6 +52,11 @@ export const StyledComment = styled.p`
 `
 
 export const StyledUser = styled.p`
+  display: flex;
+  flex-direction: row;
+  gap: 0.5rem;
+  font: 1rem 'Gill Sans';
+  font-weight: 400;
   color: cornflowerblue;
 `
 
